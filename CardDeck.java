@@ -48,7 +48,7 @@ public class CardDeck {
         /** moreCards - 카드 덱에 카드가 남아있는지 알려줌
          * @return 있으면 true, 없으면 false */
         private boolean moreCards () {
-            return card_count > 24;
+            return card_count > 0;
         }
 
 }

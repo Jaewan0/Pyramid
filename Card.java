@@ -2,10 +2,10 @@ import java.util.Objects;
 
 public class Card {
 
-    public static final String SPADES = "♠";
-    public static final String HEARTS = "♥";
-    public static final String DIAMONDS = "◆";
-    public static final String CLUBS = "♣";
+    public static final String SPADES = "Spade";
+    public static final String HEARTS = "Heart";
+    public static final String DIAMONDS = "Dia";
+    public static final String CLUBS = "Club";
 
     public static final int ACE = 1;
     public static final int JACK = 11;
@@ -22,7 +22,7 @@ public class Card {
      * @param r - 등급  */
     public Card(String s, int r) {
         rank = r;
-        suit = s + Integer.toString(r);
+        suit = s;
     }
 
     /** getSuit - 카드의 무늬 리턴 */
