@@ -22,7 +22,7 @@ public class PyramidFrame extends JFrame {
                 ImageIcon card = new ImageIcon("./Card_image/" + suit + rank + ".png");
                 CardButton cardButton = new CardButton(Integer.toString(rank), this, card);
                 cardButton.setBorderPainted(false);
-                cardButton.setPreferredSize(new Dimension(67, 98));
+                cardButton.setPreferredSize(new Dimension(75, 98));
                 p1.add(cardButton);
                 cp.add(p1);
             }
@@ -30,7 +30,8 @@ public class PyramidFrame extends JFrame {
         }
         p2 = new JPanel(new FlowLayout());
         Card c = deck.newCard();
-        p2.add(archiveButton = new ArchiveButton(this, null));
+        archiveButton = new ArchiveButton(this, null);
+        p2.add(archiveButton);
         p2.add(new ChangeButton("←", this));
         String suit = c.getSuit();
         int rank = c.getRank();
@@ -47,16 +48,16 @@ public class PyramidFrame extends JFrame {
     }
 
     public void change() {
-        archiveButton = new ArchiveButton(this,card_deck);
         Card c = deck.newCard();
         String suit = c.getSuit();
         int rank = c.getRank();
         ImageIcon card = new ImageIcon("./Card_image/" + suit + rank + ".png");
-        deckButton = new DeckButton(Integer.toString(rank), this, card);
+        deckButton = new DeckButton(Integer.toString(rank),this, card);
         p2.add(deckButton);
         p2.add(archiveButton);
         cp.add(p2);
     }
+
 
 
     public static void main(String[] args) {
