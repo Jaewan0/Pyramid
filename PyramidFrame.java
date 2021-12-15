@@ -8,6 +8,9 @@ public class PyramidFrame extends JFrame {
     private Container cp;
     private JPanel p2;
     private ImageIcon card_deck;
+    private int deck_rank;
+    private int first = 0;
+    private int second = 0;
 
     public PyramidFrame() {
         cp = getContentPane();
@@ -30,13 +33,13 @@ public class PyramidFrame extends JFrame {
         }
         p2 = new JPanel(new FlowLayout());
         Card c = deck.newCard();
-        archiveButton = new ArchiveButton(this, null);
+        archiveButton = new ArchiveButton(null,this, null);
         p2.add(archiveButton);
         p2.add(new ChangeButton("←", this));
         String suit = c.getSuit();
-        int rank = c.getRank();
-        card_deck = new ImageIcon("./Card_image/" + suit + rank + ".png");
-        deckButton = new DeckButton(Integer.toString(rank), this, card_deck);
+        deck_rank = c.getRank();
+        card_deck = new ImageIcon("./Card_image/" + suit + deck_rank + ".png");
+        deckButton = new DeckButton(Integer.toString(deck_rank), this, card_deck);
         deckButton.setBorderPainted(false);
         deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);
@@ -48,17 +51,32 @@ public class PyramidFrame extends JFrame {
     }
 
     public void change() {
+        p2.add(archiveButton = new ArchiveButton(Integer.toString(deck_rank), this, card_deck));
+        archiveButton.setBorderPainted(false);
+        archiveButton.setPreferredSize(new Dimension(70, 98));
+        archiveButton.setLocation(50, 0);
         Card c = deck.newCard();
         String suit = c.getSuit();
         int rank = c.getRank();
-        ImageIcon card = new ImageIcon("./Card_image/" + suit + rank + ".png");
-        deckButton = new DeckButton(Integer.toString(rank),this, card);
+        card_deck = new ImageIcon("./Card_image/" + suit + rank + ".png");
+        deckButton = new DeckButton(Integer.toString(rank), this, card_deck);
+        deckButton.setBorderPainted(false);
+        deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);
-        p2.add(archiveButton);
         cp.add(p2);
     }
-
-
+    public void click_pyramid(int n) {
+        first = n;
+    }
+    public void click_deck(int n) {
+        second = n;
+    }
+    public boolean delete() {
+        if (first + second == 13) {
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         new PyramidFrame();

@@ -16,5 +16,11 @@ public class DeckButton extends JButton implements ActionListener {
         if (Integer.parseInt(getText()) == 13) {
             setVisible(false);
         }
+        else if (Integer.parseInt(getText()) != 13) {
+            frame.click_deck(Integer.parseInt(getText()));
+            if (frame.delete()) {
+                setVisible(false);
+            }
+        }
     }
 }

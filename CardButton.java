@@ -16,5 +16,11 @@ public class CardButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (Integer.parseInt(getText()) == 13)
             setVisible(false);
+        else if (Integer.parseInt(getText()) != 13) {
+            frame.click_pyramid(Integer.parseInt(getText()));
+            if (frame.delete()) {
+                setVisible(false);
+            }
+        }
     }
 }
