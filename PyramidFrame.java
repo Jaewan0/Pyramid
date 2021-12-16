@@ -39,7 +39,7 @@ public class PyramidFrame extends JFrame {
         String suit = c.getSuit();
         deck_rank = c.getRank();
         card_deck = new ImageIcon("./Card_image/" + suit + deck_rank + ".png");
-        deckButton = new DeckButton(Integer.toString(deck_rank),this, card_deck);
+        deckButton = new DeckButton(this, card_deck);
         deckButton.setBorderPainted(false);
         deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);
@@ -60,7 +60,7 @@ public class PyramidFrame extends JFrame {
         String suit = c.getSuit();
         deck_rank = c.getRank();
         card_deck = new ImageIcon("./Card_image/" + suit + deck_rank + ".png");
-        deckButton = new DeckButton(Integer.toString(deck_rank), this, card_deck);
+        deckButton = new DeckButton(this, card_deck);
         deckButton.setBorderPainted(false);
         deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);

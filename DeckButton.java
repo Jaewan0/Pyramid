@@ -6,8 +6,8 @@ public class DeckButton extends JButton implements ActionListener {
     private PyramidFrame frame;
     private CardButton card;
 
-    public DeckButton(String s,PyramidFrame f, ImageIcon i) {
-        super(s, i);
+    public DeckButton(PyramidFrame f, ImageIcon i) {
+        super(i);
         frame = f;
         addActionListener(this);
     }
