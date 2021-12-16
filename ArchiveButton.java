@@ -13,9 +13,15 @@ public class ArchiveButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        frame.click_deck(Integer.parseInt(getText()));
-        if (frame.delete()) {
+        frame.click_archive(Integer.parseInt(getText()));
+        if (Integer.parseInt(getText()) == 13) {
             setVisible(false);
+        }
+        else {
+            frame.click_archive(Integer.parseInt(getText()));
+            if (frame.delete()) {
+                setVisible(false);
+            }
         }
     }
 }

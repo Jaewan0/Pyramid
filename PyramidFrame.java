@@ -34,12 +34,12 @@ public class PyramidFrame extends JFrame {
         p2 = new JPanel(new FlowLayout());
         Card c = deck.newCard();
         archiveButton = new ArchiveButton(null,this, null);
+        p2.add(new ChangeButton("Change", this));
         p2.add(archiveButton);
-        p2.add(new ChangeButton("←", this));
         String suit = c.getSuit();
         deck_rank = c.getRank();
         card_deck = new ImageIcon("./Card_image/" + suit + deck_rank + ".png");
-        deckButton = new DeckButton(Integer.toString(deck_rank), this, card_deck);
+        deckButton = new DeckButton(Integer.toString(deck_rank),this, card_deck);
         deckButton.setBorderPainted(false);
         deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);
@@ -51,15 +51,16 @@ public class PyramidFrame extends JFrame {
     }
 
     public void change() {
+        p2.remove(archiveButton);
+        p2.remove(deckButton);
         p2.add(archiveButton = new ArchiveButton(Integer.toString(deck_rank), this, card_deck));
         archiveButton.setBorderPainted(false);
         archiveButton.setPreferredSize(new Dimension(70, 98));
-        archiveButton.setLocation(50, 0);
         Card c = deck.newCard();
         String suit = c.getSuit();
-        int rank = c.getRank();
-        card_deck = new ImageIcon("./Card_image/" + suit + rank + ".png");
-        deckButton = new DeckButton(Integer.toString(rank), this, card_deck);
+        deck_rank = c.getRank();
+        card_deck = new ImageIcon("./Card_image/" + suit + deck_rank + ".png");
+        deckButton = new DeckButton(Integer.toString(deck_rank), this, card_deck);
         deckButton.setBorderPainted(false);
         deckButton.setPreferredSize(new Dimension(70, 98));
         p2.add(deckButton);
@@ -68,9 +69,7 @@ public class PyramidFrame extends JFrame {
     public void click_pyramid(int n) {
         first = n;
     }
-    public void click_deck(int n) {
-        second = n;
-    }
+    public void click_archive(int n) {second = n;}
     public boolean delete() {
         if (first + second == 13) {
             return true;
